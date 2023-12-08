@@ -30,24 +30,6 @@ function addToCart(itemName, itemPrice) {
   saveCartToLocalStorage();
 }
 
-// Fungsi untuk menghapus item dari keranjang
-function removeFromCart(itemName, itemPrice) {
-  // Cari indeks item yang akan dihapus
-  const index = cart.findIndex(
-    (item) => item.name === itemName && item.price === itemPrice
-  );
-
-  // Hapus item jika ditemukan
-  if (index !== -1) {
-    cart.splice(index, 1);
-  }
-  
-  // Memperbarui tampilan keranjang
-  updateCartDisplay();
-
-  // Menyimpan keranjang ke dalam localStorage
-  saveCartToLocalStorage();
-}
 
 // Fungsi untuk menghapus item dari keranjang
 function removeFromcart(itemName, itemPrice) {
@@ -58,7 +40,12 @@ function removeFromcart(itemName, itemPrice) {
 
   // Hapus item jika ditemukan
   if (index !== -1) {
-    cart.splice(index, 1);
+    // Kurangi jumlahnya jika lebih dari 1, jika tidak hapus item
+    if (cart[index].quantity > 1) {
+      cart[index].quantity -= 1;
+    } else {
+      cart.splice(index, 1);
+    
   }
   
   // Memperbarui tampilan keranjang
@@ -67,6 +54,8 @@ function removeFromcart(itemName, itemPrice) {
   // Menyimpan keranjang ke dalam localStorage
   saveCartToLocalStorage();
 }
+}
+
 
 // Fungsi untuk memperbarui tampilan keranjang pada halaman
 function updateCartDisplay() {
