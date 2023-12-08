@@ -5,6 +5,8 @@ document.querySelector("#shopping-cart-button").onclick = (e) => {
   e.preventDefault();
 };
 
+//mengambil data dari database
+
 // Mengambil data cart dari local storage
 const storedKeranjang = JSON.parse(localStorage.getItem("keranjang")) || [];
 const cart = storedKeranjang;
