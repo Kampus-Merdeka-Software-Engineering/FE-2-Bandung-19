@@ -63,7 +63,6 @@ function updateCartDisplay() {
   saveTotalToLocalStorage(total.toFixed(3));
 
   // Menetapkan nilai total harga ke dalam input dengan ID 'form-total'
-  //document.querySelector(".form-total input").value = total.toFixed(3);
 }
 
 // Fungsi untuk menyimpan keranjang ke dalam localStorage
@@ -77,11 +76,38 @@ function saveTotalToLocalStorage(total) {
   localStorage.setItem("total", total);
 }
 
-// Fungsi untuk memuat keranjang dari localStorage
-function loadCartFromLocalStorage() {
-  const storedKeranjang = JSON.parse(localStorage.getItem("keranjang")) || [];
-  cart.push(...storedKeranjang);
+function displayAppetizers(appetizers) {
+  let appetizerMenu = document.getElementById("menu-appetizer");
+  appetizers.forEach(function (appetizer) {
+    let menuItem = document.createElement("div");
+    menuItem.classList.add("menu-1");
+    menuItem.innerHTML = `
+            <div class="konten-1">
+                <img id="food-img" src="${appetizer.imageUrl}" />
+                <h2> ${appetizer.nama} </h2>
+                <h4> Rp${appetizer.price}.000 </h4>
+                <div class="menu-button">
+                    <img class="remove-order" style="float: left;" src="assets\minus-circle.svg"
+                        onclick="removeFromcart('${appetizer.nama}', ${appetizer.price})" />
+                    <img class="add-order" style="float: right;" src="assets\plus-circle.svg"
+                        onclick="addToCart('${appetizer.nama}', ${appetizer.price})" />
+                </div>
+            </div>
+        `;
+    appetizerMenu.appendChild(menuItem);
+  });
 }
+
+function fetchAppetizers() {
+  fetch("http://localhost:3000/product/:catalogId")
+    .then((response) => response.json())
+    .then((data) => displayAppetizers(data))
+    .catch((error) => console.error("Error:", error));
+}
+
+// Fungsi untuk memuat keranjang dari localStorage
+
+fetchImage();
 
 // Memanggil fungsi updateCartDisplay untuk pembaruan awal
 updateCartDisplay();
