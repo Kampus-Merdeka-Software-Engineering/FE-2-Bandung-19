@@ -20,7 +20,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const totalFromLocalStorage = localStorage.getItem("total");
 
   // Menetapkan nilai total harga ke dalam input dengan ID 'form-total'
-  document.getElementById("order-total").value = totalFromLocalStorage;
+  document.getElementById("form-total").value = totalFromLocalStorage;
 });
 
 /// alert page order-form
