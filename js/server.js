@@ -1,4 +1,4 @@
-const API_URL = "http://localhost:3000";
+const API_URL = "https://be-2-bandung-19-production.up.railway.app/";
 const appetizerId = [1];
 
 document.addEventListener("DOMContent Loaded ", async () => {
