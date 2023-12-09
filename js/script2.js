@@ -2,6 +2,8 @@
 const storedKeranjang = JSON.parse(localStorage.getItem("keranjang")) || [];
 const cart = storedKeranjang;
 
+console.log(storedKeranjang);
+
 // Fungsi untuk memuat keranjang dari localStorage
 function loadCartFromLocalStorage() {
   const storedKeranjang = JSON.parse(localStorage.getItem("keranjang")) || [];
