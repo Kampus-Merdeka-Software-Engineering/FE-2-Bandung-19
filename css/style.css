@@ -67,10 +67,6 @@ body {
 
 
 
-
-
-
-
 /* ///////////..dropdown../////////// */
   .dropdown {
     position: relative;
@@ -165,18 +161,6 @@ body {
     text-align: center;
 }
 
-.logo11 h1{
-    font-size: 55px;
-    color: #deb887;
-    
-}
-
-.logo11 h4{
-    font-size: 20px;
-    color:white;
-    
-}
-
 .fcontent{
     width: 34%;
     margin: 30px 5px;
@@ -234,10 +218,14 @@ body {
   color: white;
 }
 
-
+.logo2 h1{
+    font-size: 50px;
+    color: #deb887;
+}
 
 .logo2 h4{
     font-size: 30px;
+    color:white;
 }
 
 .footer {
@@ -1085,10 +1073,14 @@ body {
 
 .form{
   background-color: #E2EEE6;
-  padding-left: 28vw;
+  /* padding-left: 28vw; */
   font-size: 20px;
   padding-top: 10px;
   padding-bottom: 10px;
+}
+
+.form .form-Item {
+  width: fit-content;
 }
 
 .h1-order{
@@ -1101,6 +1093,7 @@ body {
 }
 
 .order-form{
+  margin: auto;
   font-size: 16px;
 }
 
@@ -1236,7 +1229,7 @@ label {
 /* Mobile Phone */
 @media (max-width: 450px) {
   html {
-    font-size: 30%;
+    font-size: 20%;
   }
 
   .shopping-cart{
@@ -1251,20 +1244,11 @@ label {
     height: 10px;
   }
 
-  .logo2 h1{
-    font-size: 18px;
-  }
-
-  .logo2 h4{
-    font-size: 15px;
-  }
-
-  .fcontent a{
-    font-size: 15px;
-  }
 }
 
-  
+
+
+
   /* //////////////////////..About Us..////////////////////// */
 
 .profile{
@@ -1416,3 +1400,11 @@ label {
   max-width: 200px;
   border-radius: 10px;
   }
+
+
+.order-button {
+  display: block;
+  text-align: center;
+  margin: auto;
+  border: none;
+}
