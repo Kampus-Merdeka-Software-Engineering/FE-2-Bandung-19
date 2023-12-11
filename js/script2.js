@@ -9,8 +9,6 @@ function loadCartFromLocalStorage() {
   const storedKeranjang = JSON.parse(localStorage.getItem("keranjang")) || [];
   cart.push(...storedKeranjang);
 }
-// Memanggil fungsi updateCartDisplay untuk pembaruan awal
-//refreshLocalCart();
 
 document.addEventListener("DOMContentLoaded", function () {
   // Memuat keranjang dari localStorage saat halaman dimuat
@@ -25,7 +23,7 @@ document.addEventListener("DOMContentLoaded", function () {
     totalFromLocalStorage.toLocaleString("id-ID");
 });
 
-/// alert page order-form
+// alert page order-form
 // Mendapatkan elemen gambar
 var img = document.querySelector(".order-button");
 
@@ -35,10 +33,10 @@ img.addEventListener("click", function () {
   loadCartFromLocalStorage();
   // Menampilkan pesan alert
   alert("Your order succeeds! Food will be delivered immediately");
-  window.location.href = "index.html"
-  // Menampilkan alert
-  //if (click == true) {
-    // Mengganti lokasi ke index.html
-    //location.replace("index.html");
-  //}
+
+  // Menghapus data pada localStorage
+  localStorage.clear();
+
+  // Mengarahkan halaman ke index.html
+  window.location.href = "index.html";
 });

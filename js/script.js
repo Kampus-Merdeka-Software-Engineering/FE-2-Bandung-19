@@ -67,7 +67,7 @@ function updateCartDisplay() {
   // Menambahkan setiap item ke dalam elemen keranjang
   cart.forEach((item) => {
     const listItem = document.createElement("li");
-    listItem.innerHTML = `<span>${item.name} - Rp ${item.price.toFixed(3)} x ${item.quantity || 1}</span>`;
+    listItem.innerHTML = `<span>${item.name} - Rp ${item.price} x ${item.quantity || 1}</span>`;
     cartItemsElement.appendChild(listItem);
   });
 
@@ -78,10 +78,10 @@ function updateCartDisplay() {
   );
 
   // Menampilkan total harga dalam bentuk tiga digit desimal
-  cartTotalElement.textContent = `Total: Rp ${total.toFixed(3)}`;
+  cartTotalElement.textContent = `Total: Rp ${total}`;
 
   // Menyimpan total harga ke dalam localStorage
-  saveTotalToLocalStorage(total.toFixed(3));
+  saveTotalToLocalStorage(total);
 }
 
 // Fungsi untuk menyimpan keranjang ke dalam localStorage
