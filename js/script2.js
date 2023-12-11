@@ -18,9 +18,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Mendapatkan nilai total dari localStorage
   const totalFromLocalStorage = localStorage.getItem("total");
+  console.log(totalFromLocalStorage);
 
   // Menetapkan nilai total harga ke dalam input dengan ID 'form-total'
-  document.getElementById("form-total").value = totalFromLocalStorage;
+  document.getElementById("form-total").value =
+    totalFromLocalStorage.toLocaleString("id-ID");
 });
 
 /// alert page order-form
@@ -29,9 +31,14 @@ var img = document.querySelector(".order-button");
 
 // Menambahkan event listener
 img.addEventListener("click", function () {
+  // Memuat keranjang dari localStorage saat halaman dimuat
+  loadCartFromLocalStorage();
   // Menampilkan pesan alert
   alert("Your order succeeds! Food will be delivered immediately");
-
-  // Mengarahkan ke home page setelah tombol "OK" diklik
-  window.location.href = "index.html";
+  window.location.href = "index.html"
+  // Menampilkan alert
+  //if (click == true) {
+    // Mengganti lokasi ke index.html
+    //location.replace("index.html");
+  //}
 });

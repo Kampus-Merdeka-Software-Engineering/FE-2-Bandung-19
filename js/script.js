@@ -1,7 +1,7 @@
 // Toggle class active untuk shopping cart
-const shoppingCart = document.querySelector(".shopping-cart");
+const shooppingCart = document.querySelector(".shopping-cart");
 document.querySelector("#shopping-cart-button").onclick = (e) => {
-  shoppingCart.classList.toggle("active");
+  shooppingCart.classList.toggle("active");
   e.preventDefault();
 };
 
@@ -67,9 +67,7 @@ function updateCartDisplay() {
   // Menambahkan setiap item ke dalam elemen keranjang
   cart.forEach((item) => {
     const listItem = document.createElement("li");
-    listItem.textContent = `${item.name} - Rp ${item.price.toFixed(3)} x ${
-      item.quantity || 1
-    }`;
+    listItem.innerHTML = `<span>${item.name} - Rp ${item.price.toFixed(3)} x ${item.quantity || 1}</span>`;
     cartItemsElement.appendChild(listItem);
   });
 
@@ -78,7 +76,9 @@ function updateCartDisplay() {
     (acc, item) => acc + item.price * (item.quantity || 1),
     0
   );
-  cartTotalElement.textContent = total.toFixed(3);
+
+  // Menampilkan total harga dalam bentuk tiga digit desimal
+  cartTotalElement.textContent = `Total: Rp ${total.toFixed(3)}`;
 
   // Menyimpan total harga ke dalam localStorage
   saveTotalToLocalStorage(total.toFixed(3));
@@ -95,43 +95,6 @@ function saveTotalToLocalStorage(total) {
 }
 
 // Fungsi untuk memuat keranjang dari localStorage
-function loadCartFromLocalStorage() {
-  const storedKeranjang = JSON.parse(localStorage.getItem("keranjang")) || [];
-  cart.push(...storedKeranjang);
-}
-
-function displayAppetizers(appetizers) {
-  let appetizerMenu = document.getElementById("menu-appetizer");
-  appetizers.forEach(function (appetizer) {
-    let menuItem = document.createElement("div");
-    menuItem.classList.add("menu-1");
-    menuItem.innerHTML = `
-            <div class="konten-1">
-                <img id="food-img" src="${appetizer.imageUrl}" />
-                <h2> ${appetizer.nama} </h2>
-                <h4> Rp${appetizer.price}.000 </h4>
-                <div class="menu-button">
-                    <img class="remove-order" style="float: left;" src="assets\minus-circle.svg"
-                        onclick="removeFromcart('${appetizer.nama}', ${appetizer.price})" />
-                    <img class="add-order" style="float: right;" src="assets\plus-circle.svg"
-                        onclick="addToCart('${appetizer.nama}', ${appetizer.price})" />
-                </div>
-            </div>
-        `;
-    appetizerMenu.appendChild(menuItem);
-  });
-}
-
-function fetchAppetizers() {
-  fetch("http://localhost:3000/product/:catalogId")
-    .then((response) => response.json())
-    .then((data) => displayAppetizers(data))
-    .catch((error) => console.error("Error:", error));
-}
-
-// Fungsi untuk memuat keranjang dari localStorage
-
-fetchImage();
 
 // Memanggil fungsi updateCartDisplay untuk pembaruan awal
 updateCartDisplay();
