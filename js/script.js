@@ -77,7 +77,7 @@ function updateCartDisplay() {
     0
   );
 
-  // Menampilkan total harga dalam bentuk tiga digit desimal
+  // Menampilkan total harga
   cartTotalElement.textContent = `Total: Rp ${total}`;
 
   // Menyimpan total harga ke dalam localStorage
