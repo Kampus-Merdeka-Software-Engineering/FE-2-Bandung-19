@@ -324,7 +324,7 @@ body {
   display: grid;
   grid-template-columns: repeat(4, minmax(100px, auto));
   gap: 1rem;
-  padding: 5rem 10rem;
+  padding: 1rem 3rem;
   background-color: #D5D58F;
 }
 
